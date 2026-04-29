@@ -143,10 +143,20 @@
               <div id="bar" class="progress-bar" role="progressbar" style="width:0%"><span id="percent" class="sr-only">0% Complete</span></div>
             </div>
           </div>
+          <!-- styles to match site -->
+          <style>
+            .form-container .form-control{width:100%;padding:.6rem .75rem;border:1px solid var(--color-border);border-radius:8px;font:inherit;background:#fff}
+            .form-container label.form-label{display:block;margin-bottom:.35rem;font-weight:700;color:var(--color-blue)}
+            .form-container .btn--primary{background:var(--color-blue-light);color:#fff;border:none;padding:.6rem 1rem;border-radius:8px;cursor:pointer}
+            .form-container .btn--light{background:#fff;border:1px solid var(--color-border);padding:.45rem .7rem;border-radius:8px;cursor:pointer}
+            .form-container .signature-pad{background:#fff}
+            .form-container h2{margin:0 0 .5rem}
+          </style>
+
           <!-- scripts for signature and reCAPTCHA -->
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="" crossorigin="anonymous"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
           <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-          <script src="https://www.google.com/recaptcha/api.js?render=6LeUdfIbAAAAACe-xluOp2foiAwGFwBzP5V1fjCd" async defer></script>
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
           <script>
             (function () {
               var canvas = document.getElementById('signature_1');
@@ -171,12 +181,11 @@
               // on submit: capture signature and recaptcha token
               var form = document.getElementById('form-app');
               form.addEventListener('submit', function (e) {
-                // signature
+                // capture signature synchronously before submit
                 if (signaturePad && !signaturePad.isEmpty()) {
                   var dataUrl = signaturePad.toDataURL('image/png');
                   document.getElementById('hidden_signature_1').value = dataUrl;
                 } else {
-                  // if required and empty, prevent submit
                   var sigRequired = document.getElementById('hidden_signature_1').hasAttribute('required');
                   if (sigRequired) {
                     e.preventDefault();
@@ -184,24 +193,8 @@
                     return false;
                   }
                 }
-
-                // add recaptcha token
-                if (window.grecaptcha && grecaptcha.execute) {
-                  e.preventDefault();
-                  grecaptcha.ready(function () {
-                    grecaptcha.execute('6LeUdfIbAAAAACe-xluOp2foiAwGFwBzP5V1fjCd', { action: 'easy_forms' }).then(function (token) {
-                      var existing = document.getElementById('g-recaptcha-response');
-                      if (existing) existing.remove();
-                      var input = document.createElement('input');
-                      input.type = 'hidden';
-                      input.name = 'g-recaptcha-response';
-                      input.id = 'g-recaptcha-response';
-                      input.value = token;
-                      form.appendChild(input);
-                      form.submit();
-                    });
-                  });
-                }
+                // For reCAPTCHA v2 (visible widget) the token will be added automatically by the widget.
+                // Let the normal form submission proceed.
               });
             })();
           </script>
