@@ -51,93 +51,160 @@
         </p>
 
         <div class="embed-wrap" style="margin-top: 1rem">
-          <!-- Marva Forms (widget JS) -->
-          <div id="c6">
-            <p style="padding: 1rem 1.25rem; margin: 0; color: var(--color-muted)">
-              Cargando formulario… Si no aparece, abre el
-              <a href="https://formularios.solucionesmarva.com/app/form?id=fQBIOw" rel="noopener noreferrer"
-                >formulario en línea</a
-              >.
-            </p>
+          <!-- Formulario integrado: adaptado al estilo del sitio -->
+          <div class="form-container" style="padding:1.5rem; border-radius:8px;">
+            <div id="messages" aria-live="polite"></div>
+            <form action="https://formularios.solucionesmarva.com/app/f?id=6" method="post" enctype="multipart/form-data" accept-charset="UTF-8" id="form-app" class="site-form">
+              <fieldset class="row" style="margin:0; gap:1rem;">
+                <div class="col-12">
+                  <h2 style="margin:0 0 0.5rem; color:var(--color-blue); font-family:var(--font-display);">Contrato — Registro</h2>
+                  <p style="color:var(--color-muted); margin:0 0 0.75rem;">Llena este formulario para participar en el programa.</p>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label required" for="text_2">Representante legal / Director</label>
+                  <input type="text" id="text_2" name="text_2" maxlength="100" placeholder="Juan Mario Pérez Hernández" class="form-control" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label required" for="text_5">CCT</label>
+                  <input type="text" id="text_5" name="text_5" placeholder="09AAA0000A" class="form-control" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label required" for="text_1">Nombre del titular</label>
+                  <input type="text" id="text_1" name="text_1" maxlength="80" placeholder="Colegio las mil sonrisas" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label" for="text_292095">Dominio escolar</label>
+                  <input type="text" id="text_292095" name="text_292095" placeholder="milsonrisas.edu.mx" class="form-control">
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label required" for="text_4">Teléfono</label>
+                  <input type="text" id="text_4" name="text_4" maxlength="10" placeholder="5540000967" class="form-control" required>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label required" for="email_1">E-Mail</label>
+                  <input type="email" id="email_1" name="email_1" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label" for="checkbox_2">Método preferido de contacto</label>
+                  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                    <label><input type="checkbox" name="checkbox_2[]" value="Teléfono"> Teléfono</label>
+                    <label><input type="checkbox" name="checkbox_2[]" value="E-Mail"> E-Mail</label>
+                    <label><input type="checkbox" name="checkbox_2[]" value="WhatsApp"> WhatsApp</label>
+                    <label><input type="checkbox" name="checkbox_2[]" value="SMS"> SMS</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label required" for="textarea_1">Dirección</label>
+                  <textarea id="textarea_1" name="textarea_1" rows="3" maxlength="1000" class="form-control" placeholder="Priv Marva 7, El Carmen, Tlalpujahua..." required></textarea>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label required" for="checkbox_1">Aceptación del contrato</label>
+                  <div>
+                    <label style="display:flex;gap:.5rem;align-items:center">
+                      <input type="checkbox" name="checkbox_1[]" id="checkbox_1_0" value="Acepto el contrato de prestación de servicios" data-required="true" required>
+                      <span>Acepto el <a href="../contrato/" target="_blank" rel="noopener">contrato de prestación de servicios</a></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label required">Firma</label>
+                  <div class="signature-pad" style="border:1px solid var(--color-border); border-radius:8px; padding:8px; background:#fff;">
+                    <canvas id="signature_1" width="800" height="200" style="width:100%;height:140px; display:block;"></canvas>
+                    <div style="margin-top:.5rem; display:flex; gap:.5rem;">
+                      <button type="button" id="clear_signature_1" class="btn btn--light">Limpiar</button>
+                      <button type="button" id="undo_signature_1" class="btn btn--light">Deshacer</button>
+                    </div>
+                    <input type="hidden" name="hidden_signature_1" id="hidden_signature_1" required>
+                  </div>
+                </div>
+
+                <div class="col-12" style="margin-top:.5rem;">
+                  <div id="recaptcha_1" class="g-recaptcha" data-sitekey="6LeUdfIbAAAAACe-xluOp2foiAwGFwBzP5V1fjCd"></div>
+                </div>
+
+                <div class="col-12" style="margin-top:1rem;">
+                  <button type="submit" id="button_1" class="btn btn--primary">Enviar</button>
+                </div>
+
+              </fieldset>
+              <div style="display:none"><label for="_email">Disculpe, pero deje este campo en blanco</label><input type="text" id="_email" name="_email" class="form-control"></div>
+            </form>
+            <div id="progress" class="progress" style="display:none; margin-top:1rem;">
+              <div id="bar" class="progress-bar" role="progressbar" style="width:0%"><span id="percent" class="sr-only">0% Complete</span></div>
+            </div>
           </div>
-          <script type="text/javascript">
-            (function (d, t) {
-              var s = d.createElement(t),
-                options = {
-                  id: "fQBIOw",
-                  container: "c6",
-                  height: "1469px",
-                  form: "https://formularios.solucionesmarva.com/app/embed",
-                };
-              s.type = "text/javascript";
-              s.src = "https://formularios.solucionesmarva.com/static_files/js/form.widget.js";
-              s.onload = s.onreadystatechange = function () {
-                var rs = this.readyState;
-                if (rs) if (rs != "complete") if (rs != "loaded") return;
-                try {
-                  new EasyForms().initialize(options).display();
-                } catch (e) {}
-              };
-              var scr = d.getElementsByTagName(t)[0],
-                par = scr.parentNode;
-              par.insertBefore(s, scr);
-            })(document, "script");
-          </script>
-
-          <!-- Fallback iframe: se muestra si el widget no carga -->
-          <iframe
-            id="marva-fallback"
-            title="Formulario de registro"
-            src=""
-            style="width:100%;min-height:700px;border:0;border-radius:8px;overflow:hidden;display:none;margin-top:1rem;"
-            loading="lazy"
-          ></iframe>
-
-          <noscript>
-            <p style="margin-top:0.75rem">
-              Si JavaScript está deshabilitado o el formulario no carga, ábrelo en una nueva ventana:
-              <a href="https://formularios.solucionesmarva.com/app/form?id=fQBIOw" target="_blank" rel="noopener noreferrer"
-                >Abrir formulario</a
-              >
-            </p>
-          </noscript>
-
+          <!-- scripts for signature and reCAPTCHA -->
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+          <script src="https://www.google.com/recaptcha/api.js?render=6LeUdfIbAAAAACe-xluOp2foiAwGFwBzP5V1fjCd" async defer></script>
           <script>
-            // Construir URL de embed específica que el sistema de formularios espera,
-            // incluyendo parámetros como parentUrl, title y referrer.
             (function () {
-              var id = 'fQBIOw';
-              var iframe = document.getElementById('marva-fallback');
-              if (!iframe) return;
+              var canvas = document.getElementById('signature_1');
+              var signaturePad = null;
+              if (canvas && window.SignaturePad) {
+                signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgba(255,255,255,0)' });
+              }
 
-              var params = new URLSearchParams();
-              params.set('id', id);
-              params.set('sid', '0');
-              params.set('p', '1');
-              params.set('t', '1');
-              params.set('reset', '1');
-              params.set('js', '1');
-              params.set('rec', '1');
-              params.set('parentUrl', location.href);
-              params.set('title', document.title || 'Registro');
-              params.set('url', location.href);
-              params.set('referrer', document.referrer || '');
-
-              iframe.src = 'https://formularios.solucionesmarva.com/app/embed?' + params.toString();
-
-              // Mostrar iframe si después del widget no se ha inyectado contenido
-              setTimeout(function () {
-                try {
-                  var container = document.getElementById('c6');
-                  var hasWidget = container && container.querySelector && container.querySelector('[data-easyforms], iframe, form, .easyforms');
-                  if (!hasWidget) iframe.style.display = 'block';
-                } catch (e) {
-                  iframe.style.display = 'block';
+              document.getElementById('clear_signature_1').addEventListener('click', function () {
+                if (signaturePad) signaturePad.clear();
+                document.getElementById('hidden_signature_1').value = '';
+              });
+              document.getElementById('undo_signature_1').addEventListener('click', function () {
+                if (!signaturePad) return;
+                var data = signaturePad.toData();
+                if (data && data.length) {
+                  data.pop();
+                  signaturePad.fromData(data);
                 }
-              }, 1200);
+              });
+
+              // on submit: capture signature and recaptcha token
+              var form = document.getElementById('form-app');
+              form.addEventListener('submit', function (e) {
+                // signature
+                if (signaturePad && !signaturePad.isEmpty()) {
+                  var dataUrl = signaturePad.toDataURL('image/png');
+                  document.getElementById('hidden_signature_1').value = dataUrl;
+                } else {
+                  // if required and empty, prevent submit
+                  var sigRequired = document.getElementById('hidden_signature_1').hasAttribute('required');
+                  if (sigRequired) {
+                    e.preventDefault();
+                    alert('Por favor firma el formulario antes de enviar.');
+                    return false;
+                  }
+                }
+
+                // add recaptcha token
+                if (window.grecaptcha && grecaptcha.execute) {
+                  e.preventDefault();
+                  grecaptcha.ready(function () {
+                    grecaptcha.execute('6LeUdfIbAAAAACe-xluOp2foiAwGFwBzP5V1fjCd', { action: 'easy_forms' }).then(function (token) {
+                      var existing = document.getElementById('g-recaptcha-response');
+                      if (existing) existing.remove();
+                      var input = document.createElement('input');
+                      input.type = 'hidden';
+                      input.name = 'g-recaptcha-response';
+                      input.id = 'g-recaptcha-response';
+                      input.value = token;
+                      form.appendChild(input);
+                      form.submit();
+                    });
+                  });
+                }
+              });
             })();
           </script>
-          <!-- End Marva Forms / fallback -->
         </div>
       </div>
     </main>
