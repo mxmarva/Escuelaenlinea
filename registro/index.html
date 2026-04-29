@@ -88,7 +88,7 @@
           <iframe
             id="marva-fallback"
             title="Formulario de registro"
-            src="https://formularios.solucionesmarva.com/app/form?id=fQBIOw"
+            src=""
             style="width:100%;min-height:700px;border:0;border-radius:8px;overflow:hidden;display:none;margin-top:1rem;"
             loading="lazy"
           ></iframe>
@@ -103,20 +103,39 @@
           </noscript>
 
           <script>
-            // Mostrar iframe fallback si el widget no inicializa en ~1.5s
-            setTimeout(function () {
-              try {
-                var container = document.getElementById('c6');
-                var fallback = document.getElementById('marva-fallback');
-                var hasWidget = container && container.querySelector && container.querySelector('[data-easyforms], iframe, form, .easyforms');
-                // si no detectamos contenido generado por el widget, mostramos el iframe
-                if (!hasWidget && fallback) {
-                  fallback.style.display = 'block';
+            // Construir URL de embed específica que el sistema de formularios espera,
+            // incluyendo parámetros como parentUrl, title y referrer.
+            (function () {
+              var id = 'fQBIOw';
+              var iframe = document.getElementById('marva-fallback');
+              if (!iframe) return;
+
+              var params = new URLSearchParams();
+              params.set('id', id);
+              params.set('sid', '0');
+              params.set('p', '1');
+              params.set('t', '1');
+              params.set('reset', '1');
+              params.set('js', '1');
+              params.set('rec', '1');
+              params.set('parentUrl', location.href);
+              params.set('title', document.title || 'Registro');
+              params.set('url', location.href);
+              params.set('referrer', document.referrer || '');
+
+              iframe.src = 'https://formularios.solucionesmarva.com/app/embed?' + params.toString();
+
+              // Mostrar iframe si después del widget no se ha inyectado contenido
+              setTimeout(function () {
+                try {
+                  var container = document.getElementById('c6');
+                  var hasWidget = container && container.querySelector && container.querySelector('[data-easyforms], iframe, form, .easyforms');
+                  if (!hasWidget) iframe.style.display = 'block';
+                } catch (e) {
+                  iframe.style.display = 'block';
                 }
-              } catch (e) {
-                if (document.getElementById('marva-fallback')) document.getElementById('marva-fallback').style.display = 'block';
-              }
-            }, 1500);
+              }, 1200);
+            })();
           </script>
           <!-- End Marva Forms / fallback -->
         </div>
