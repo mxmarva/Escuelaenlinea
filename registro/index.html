@@ -51,7 +51,7 @@
         </p>
 
         <div class="embed-wrap" style="margin-top: 1rem">
-          <!-- Marva Forms -->
+          <!-- Marva Forms (widget JS) -->
           <div id="c6">
             <p style="padding: 1rem 1.25rem; margin: 0; color: var(--color-muted)">
               Cargando formulario… Si no aparece, abre el
@@ -83,7 +83,42 @@
               par.insertBefore(s, scr);
             })(document, "script");
           </script>
-          <!-- End Marva Forms -->
+
+          <!-- Fallback iframe: se muestra si el widget no carga -->
+          <iframe
+            id="marva-fallback"
+            title="Formulario de registro"
+            src="https://formularios.solucionesmarva.com/app/form?id=fQBIOw"
+            style="width:100%;min-height:700px;border:0;border-radius:8px;overflow:hidden;display:none;margin-top:1rem;"
+            loading="lazy"
+          ></iframe>
+
+          <noscript>
+            <p style="margin-top:0.75rem">
+              Si JavaScript está deshabilitado o el formulario no carga, ábrelo en una nueva ventana:
+              <a href="https://formularios.solucionesmarva.com/app/form?id=fQBIOw" target="_blank" rel="noopener noreferrer"
+                >Abrir formulario</a
+              >
+            </p>
+          </noscript>
+
+          <script>
+            // Mostrar iframe fallback si el widget no inicializa en ~1.5s
+            setTimeout(function () {
+              try {
+                var container = document.getElementById('c6');
+                var fallback = document.getElementById('marva-fallback');
+                var hasWidget = container && container.querySelector && container.querySelector('[data-easyforms], iframe, form, .easyforms');
+                // si no detectamos contenido generado por el widget, mostramos el iframe
+                if (!hasWidget && fallback) {
+                  fallback.style.display = 'block';
+                }
+              } catch (e) {
+                if (document.getElementById('marva-fallback')) document.getElementById('marva-fallback').style.display = 'block';
+              }
+            }, 1500);
+          </script>
+          <!-- End Marva Forms / fallback -->
         </div>
       </div>
     </main>
