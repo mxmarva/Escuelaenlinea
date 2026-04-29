@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es-MX" data-site-root="">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        var r = document.documentElement.getAttribute("data-site-root");
+        if (r == null || r === "") r = "/";
+        if (r !== "/" && !/\/$/.test(r)) r += "/";
+        var b = document.createElement("base");
+        b.href = r;
+        var m = document.querySelector("meta[charset]");
+        document.head.insertBefore(b, m ? m.nextSibling : document.head.firstChild);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contacto Escuela en Línea: dirección, teléfono y correo Soluciones Marva." />
+    <title>Contacto — Escuela en Línea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="assets/img/Escuela-en-Linea-red.png" type="image/png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html" aria-label="Escuela en Línea, inicio">
+          <img src="assets/img/Escuela-en-Linea-red.png" width="280" height="80" alt="Escuela en Line@" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Principal">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acerca/">Acerca</a></li>
+            <li><a href="registro/">Registro</a></li>
+            <li><a href="contrato/">Contrato</a></li>
+            <li><a href="contacto/" aria-current="page">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero hero--page" aria-labelledby="page-title">
+      <div class="hero__content">
+        <h1 id="page-title">Contacto</h1>
+        <p class="breadcrumbs"><a href="index.html">Inicio</a> › Contacto</p>
+      </div>
+    </section>
+
+    <main id="contenido" class="page-main">
+      <div class="container">
+        <p class="lead-statement">
+          Si tienes dudas sobre el programa o la inscripción, comunícate con nosotros por los siguientes medios.
+        </p>
+        <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <div class="contact-grid" style="margin-top: 2rem">
+          <div class="contact-card">
+            <h2>Nosotros</h2>
+            <p><strong>Escuela en Línea</strong></p>
+            <p style="margin-top: 1rem; color: var(--color-muted)">
+              Programa de Soluciones Marva · Ciudad de México (Tlalpan). Para ubicación exacta y horarios,
+              confirma por teléfono o correo.
+            </p>
+            <p style="margin-top: 1.25rem">
+              <a href="mailto:contacto@solucionesmarva.com">Envíanos un correo</a>
+            </p>
+            <p style="margin-top: 0.5rem">
+              <a href="tel:+525540000967">Llámanos: (55) 4000-0967</a>
+            </p>
+          </div>
+          <div class="contact-card">
+            <h2>Registro y seguimiento</h2>
+            <p style="color: var(--color-muted)">
+              Para altas de escuelas y datos de la institución, utiliza el formulario oficial (Marva Forms) en
+              la página de registro; allí el equipo especializado dará seguimiento a tu solicitud.
+            </p>
+            <p style="margin-top: 1.25rem">
+              <a class="btn btn--primary" href="registro/">Ir a registro</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <strong style="color: #f1f5f9; font-size: 1rem">Soluciones MARVA</strong>
+          <p>Integrante del corporativo MARVA. Plataforma Escuela en Línea.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Buscar</h3>
+          <form class="footer-search" action="https://www.google.com/search" method="get" role="search">
+            <label for="footer-search-input" class="visually-hidden">Buscar en la web</label>
+            <input id="footer-search-input" type="search" name="q" placeholder="Escuela en Línea…" required />
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+        <div class="footer-col">
+          <h3>¿Necesitas ayuda?</h3>
+          <div class="footer-help">
+            <p>Registro de escuelas y dudas sobre el programa.</p>
+            <p><a href="tel:+525540000967">(55) 4000-0967</a></p>
+            <p>
+              <a href="mailto:contacto@solucionesmarva.com">Correo</a>
+              <span style="color: #64748b; margin: 0 0.35rem" aria-hidden="true">·</span>
+              <a href="contrato/">Contrato</a>
+            </p>
+            <p>
+              <a href="registro/">Registro</a>
+              <span style="color: #64748b; margin: 0 0.35rem" aria-hidden="true">·</span>
+              <a href="contacto/">Contacto</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Nuestro sitio</h3>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="acerca/">Acerca</a></li>
+            <li><a href="registro/">Registro</a></li>
+            <li><a href="contrato/">Contrato</a></li>
+            <li><a href="contacto/">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p style="margin: 0">
+          © 2009–<span id="year"></span> Escuela en Línea · Soluciones Tecnológicas de Infraestructura y Sistemas
+          S.A. de C.V. ·
+          <a href="https://www.solucionesmarva.com" rel="noopener noreferrer">Corporativo Marva</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
